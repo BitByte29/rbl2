@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Patient</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/lstyle.css">
+</head>
+
+<body>
+    <div style="display: flex;flex-direction: column;width: 50%;">
+    </div>
+
+
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <div class="square" style="--i:0;"></div>
+            <div class="square" style="--i:1;"></div>
+            <div class="square" style="--i:2;"></div>
+            <div class="square" style="--i:3;"></div>
+            <div class="square" style="--i:4;"></div>
+            <div class="container">
+                <div class="form">
+                    <h2>Add Patient Data</h2>
+                    <form action="">
+                        <div class="inputForm"><input type="text" id="name" value="" placeholder="Name" autofocus></div>
+                        <div class="inputForm"><input type="number" id="age" placeholder="Age"></div>
+                        <div class="inputForm"><input type="text" id="doj" onfocus="(this.type='date')" placeholder="Date"></div>
+                        <div class="inputForm"><input type="text" id="analysis" value="" placeholder="Analysis"></div>
+                    </form>
+                    <div class="btns">
+                        <button onclick="postData()">Submit</button>
+                        <button onclick="window.location.href = 'patients.html';">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+    <script src="../jquery-3.6.0.js"> </script>
+    <script>
+        const api_url = "https://rbl2.herokuapp.com/user"
+        function postData() {
+            var name2 = $('#name').val();
+            var age = $('#age').val();
+            var doj = $('#doj').val();
+            var analysis = $('#analysis').val();
+            var api = "https://api.thingspeak.com/channels/1699416/feeds.json?results=5"
+            data = { name2: name2, age: age, date: doj, api: api, analysis: analysis };
+            alert(data)
+            console.log(data)
+            fetch(api_url, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    window.location.href = "patients.html";
+                })
+        }
+    </script>
+
+</body>
+
+</html>

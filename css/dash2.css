@@ -1,0 +1,120 @@
+.aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.aside .attop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: auto;
+}
+
+.aside .attop .sides {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 600;
+  background-color: transparent;
+  border: 2px solid #1696e0;
+  height: 150px;
+  width: 250px;
+  margin: 10px;
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.aside .attop .sides:hover {
+  border: 2px solid #1696e0;
+  background-color: #18aaff;
+  color: black;
+}
+
+.aside .attop .sides:hover span {
+  color: yellow;
+}
+
+.aside .attop .sides span {
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  font-size: 1.8rem;
+  color: #1696e0;
+}
+
+.aside .left {
+  display: flex;
+}
+
+
+
+.responsive-table {
+  min-width: 400px;
+  border: 2px solid #1696e0;
+  text-align: center;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+.responsive-table thead{
+  color:#1696e0 ;
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+th,td{
+  padding: 10px 20px;
+  transition: 0.2s;
+}
+
+
+td:hover {
+  color: #1696e0;
+}
+
+.responsive-table .table-header {
+  background-color: black;
+  font-size: 14px;
+  color: #1696e0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.frames{
+  /* padding-top: 20px; */
+  display: flex;
+  /* background-color: red; */
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.frames iframe{
+  margin-top: 15px;
+  border-radius: 10px;
+  
+}
+
+
+/*# sourceMappingURL=dash2.css.map */

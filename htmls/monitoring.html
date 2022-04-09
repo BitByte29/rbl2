@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measure</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease-in-out;
+        }
+        body{
+            
+            background-color: #191d2b;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            display: flex;
+        }
+        .main{       
+        min-height: 100vh;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 3rem 18rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .details a:hover{
+            background-color: greenyellow;
+        }
+        .sub{
+            padding: 2rem 3rem;
+            background-color: #1696e0;
+            width: 50%;
+            font-weight: 700;
+            min-height: 300px;
+            display: flex;
+            justify-content: space-evenly;
+            /* align-items: center; */
+            flex-direction: column;
+            
+        }
+        .details input{
+            height: 30px;
+            width: 70%;
+            border-radius: 10px;
+        }
+        .details button{
+            height: 30px;
+            left: 50%;  
+            width: 70%;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        span{
+            color: blue;
+            font-size: 1.5rem;
+        }
+        button:hover{
+            background-color: greenyellow;
+        }
+        .header{
+            position: fixed;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba();
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header"><h1>Instructions</h1></div>
+    <div class="main">
+        <div class="sub instruction">
+            <p><span>1.</span> Enter your Patient ID Correctly.</p>
+            <p><span>2.</span> Attach the measuring device.</p>
+            <p><span>3.</span> Turn On the device.</p>
+            <p><span>4.</span> Click on the Start Button</p>
+            <p><span>5.</span> Wait for some time till get the alert.</p>
+            <p><span>6.</span> Data recorded.</p>
+        </div>
+        <div class="sub details">
+            <p>Patient ID: </p>
+            <input type="text" placeholder="Patient_ID" required>
+            <button onclick="alert('Collecting data')">Start</button>
+            <a style="position: relative;left: 50%;transform: translateX(-85%);color: black;background-color: green;
+            height: 50px; width: 150px;display: grid;place-items: center;border-radius: 20px;text-decoration: none;color: white;"
+            href="https://wa.me/919820990070" target="_blank">Whatsapp</a>
+
+        </div>
+    </div>
+    
+</body>
+</html>

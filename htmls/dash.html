@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PID</title>
+  <link rel="stylesheet" href="../css/dash.css">
+  <script src="../jquery-3.6.0.js"></script>
+  <script src="../script.js"></script>
+  <script>
+    $(document).ready(function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      getDataById(id);
+      GetTableData(); //Currently calling with default API
+    });
+    function GetTableData() {
+      $.ajax
+        ({
+          url: "https://api.thingspeak.com/channels/1699416/feeds.json?results=5",
+          type: 'GET',
+          contentType: "application/json",
+          //dataType: "json",
+          //crossDomain: true,
+          success: function (data, textStatus, xhr) {
+            $.each(data, function (i, item) {
+              if (i == 'feeds') {
+                var len = item.length;
+                // var initial = $('#tbody').html();
+                var initial = ""
+                for (let i = len - 1; i >= 0; i--) {
+                  initial +=
+                    `<tr>
+                              <td>${item[i].created_at.slice(0, 10)}</td>
+                              <td>${item[i].field1}</td>
+                              <td>${item[i].field2}</td>
+                            </tr>
+                          `;
+                  if(i == len -1){
+                    $('#mtemp').text(`${item[i].field1} C`);
+                    $('#mbpm').text(`${item[i].field2} BPM`);
+                  }
+                }
+                $('#tbody').html(initial);
+              }
+            });
+          },
+          error: function (xhr, textStatus, errorThrown) {
+            alert(errorThrown);
+          }
+        });
+      setTimeout(GetTableData, 1000);
+
+    }
+
+
+  </script>
+
+</head>
+
+<body>
+  <div class="side">
+    <div class="img"><img src="../img/port9.jpg" alt="P"></div>
+    <h2 id="name2"></h2>
+    <p><span>Age:</span><b id="age"></b></p>
+    <p><span>Joined:</span><b id="date"></b></p>
+    <p><span>Dignosis:</span> <b id="analysis"></b></p>
+
+    <div class="whatsapp">
+      <a href="https://wa.me/919326155834" target="_blank">Whatsapp</a>
+    </div>
+  </div>
+
+  <div class="aside">
+    <div class="blocks attop">
+      <div class="sides">BPM <span>&nbspNormal</span></div>
+      <div class="sides">Records: <span> 12</span></div>
+      <div class="sides">Temp: <span id="mtemp"></span></div>
+      <div class="sides">Pulse: <span id="mbpm"></span></div>
+    </div>
+    <div class="left">
+      <table class="responsive-table">
+        <thead>
+          <td>Date</td>
+          <td>Temp</td>
+          <td>BPM</td>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td>2022-12-12</td>
+            <td>44</td>
+            <td>50</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="frames">
+        <iframe width="450" height="250" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1699416/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature&type=line&xaxis=Time"></iframe>
+        <iframe width="450" height="250" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1699416/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=BPM&type=line&xaxis=Time&yaxis=BPM"></iframe>
+      </div>
+
+    </div>
+
+  </div>
+  <script type="text/javascript">
+  </script>
+
+</body>
+
+</html>
