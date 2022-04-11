@@ -13,7 +13,10 @@
     $(document).ready(function () {
       const urlParams = new URLSearchParams(window.location.search);
       const id = urlParams.get('id');
-      getDataById(id);
+      var id1 = id.slice(-5)
+      var id2 = id.slice(0,-5);
+      $('#mimg').attr('src',`../img/${id1}.jpg`);
+      getDataById(id2);
       GetTableData(); //Currently calling with default API
     });
     function GetTableData() {
@@ -39,8 +42,46 @@
                             </tr>
                           `;
                   if(i == len -1){
-                    $('#mtemp').text(`${item[i].field1} C`);
-                    $('#mbpm').text(`${item[i].field2} BPM`);
+                    $('#mtemp').text(`${item[len -1].field1} C`);
+                    $('#mbpm').text(`${item[len-1].field2} BPM`);
+                    var check = parseInt(item[len - 1].field2);
+                    var tempC = parseInt(item[len - 1].field1);
+
+                    if(tempC > 96 && tempC <= 100){
+                      
+                      $('#mtemp').css('color','green');
+                    }else{
+                      $('#mtemp').css('color','orange');
+                    }
+
+                    // alert(check)
+                    if(check >= 70 && check <= 100){
+                      $('#bp').css('color','green').text('Normal');
+                      $('#mbpm').css('color','green');
+                    }else if(check < 70){
+                      $('#ana').text('Yes').css('color','red');
+                      $('#bp').css('color','orange').text('Not Normal');
+                      
+                      $('#mbpm').css('color','orange');
+                      $('#analysis').text('Not Healthy').css('color','red');
+                    }
+                    else if(check > 100 && check <=110){
+                      $('#bp').css('color','orange').text('Not Normal');
+                      $('#mbpm').css('color','orange');
+                      $('#analysis').text('Not Healthy').css('color','orange');
+                    }
+                    else if(check > 110 ){
+                      $('#bp').css('color','red').text('High');
+                      $('#mbpm').css('color','red');
+                      $('#analysis').text('Not Healthy').css('color','red');;
+                    }
+                    else{
+                      $('#bp').text('Normal');
+                      $('#ana').text('No')
+
+                      $('#analysis').text('Not Healthy');
+
+                    }
                   }
                 }
                 $('#tbody').html(initial);
@@ -62,7 +103,7 @@
 
 <body>
   <div class="side">
-    <div class="img"><img src="../img/port9.jpg" alt="P"></div>
+    <div class="img"><img id="mimg" src="" alt="P"></div>
     <h2 id="name2"></h2>
     <p><span>Age:</span><b id="age"></b></p>
     <p><span>Joined:</span><b id="date"></b></p>
@@ -75,8 +116,8 @@
 
   <div class="aside">
     <div class="blocks attop">
-      <div class="sides">BPM <span>&nbspNormal</span></div>
-      <div class="sides">Records: <span> 12</span></div>
+      <div class="sides">BPM: <span id="bp">&nbspNormal</span></div>
+      <div class="sides">Anameic: <span id="ana"> &nbsp;No</span></div>
       <div class="sides">Temp: <span id="mtemp"></span></div>
       <div class="sides">Pulse: <span id="mbpm"></span></div>
     </div>

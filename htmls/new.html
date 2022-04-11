@@ -61,8 +61,7 @@
             var analysis = $('#analysis').val();
             var api = "https://api.thingspeak.com/channels/1699416/feeds.json?results=5"
             data = { name2: name2, age: age, date: doj, api: api, analysis: analysis };
-            alert(data)
-            console.log(data)
+            // console.log(data)
             fetch(api_url, {
                 method: "POST",
                 headers: {
