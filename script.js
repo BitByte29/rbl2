@@ -10,14 +10,14 @@ function loadData(records = []){
 		
 		allEle += `<div class="portfolio-item">
 		<div class="image">
-			<img src=../img/port${i}.jpg alt="">
+			<img src=../img/port${records.length - 1 -i}.jpg alt="">
 		</div>
 		<div class="hover-items">
 			<h3><span>Name:</span> ${records[i].name2}</h3>
 			<h3><span>DOJ:</span> ${records[i].date}</h3>
 			<h3><span>Checkup:</span> ${records[i].analysis}</h3>
 			<div class="icons">
-				<a href="dash.html?id=${records[i]._id}port${i}" class="icon">
+				<a href="dash.html?id=${records[i]._id}port${records.length - 1 -i}" class="icon">
 					GO
 				</a>
 				<button class="delbtn" onclick=deleteData('${records[i]._id}')>Delete</button>
